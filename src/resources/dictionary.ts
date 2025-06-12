@@ -1853,6 +1853,17 @@ const childrenEnglish: DictionaryResource[] = [
     languageCategory: 'en',
   },
   {
+    id: 'pep-grade7-2',
+    name: '七年级下',
+    description: '人教版(新)七年级下册',
+    category: '青少年英语',
+    tags: ['人教版'],
+    url: '/dicts/PEP_Grade7_Term2.json',
+    length: 450,
+    language: 'en',
+    languageCategory: 'en',
+  },
+  {
     id: 'pep-sl-yi1',
     name: '人教版(新起点)一年级上',
     description: '人教版一年级上册',
