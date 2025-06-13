@@ -1,4 +1,4 @@
-import standTypingHandPosition from '@/assets/stand-typing-hand-position.png'
+import standardTypingHandPosition from '@/assets/standard_typing_hand_position.png'
 import { Dialog, Transition } from '@headlessui/react'
 import { ComputerDesktopIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { Fragment, useState } from 'react'
@@ -53,7 +53,7 @@ export default function HandPositionIllustration() {
                     推荐打字指法图示
                   </Dialog.Title>
                   <div className="mt-8">
-                    <img className="block " src={standTypingHandPosition} alt="" />
+                    <img className="block " src={standardTypingHandPosition} alt="" />
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
