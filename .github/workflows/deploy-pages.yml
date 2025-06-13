@@ -1,29 +1,35 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches:
       - main
-env:
-  REACT_APP_DEPLOY_ENV: pages
+
+permissions:
+  contents: write
+
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.17.0]
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '18'
           cache: 'yarn'
-      - name: Install Packages
-        run: yarn
-      - name: Build page
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
         run: yarn build
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          folder: build
+          branch: gh-pages
+          token: ${{ secrets.GH_PAT }}
