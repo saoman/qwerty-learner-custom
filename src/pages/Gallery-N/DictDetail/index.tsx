@@ -10,12 +10,10 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { currentChapterAtom, currentDictIdAtom, reviewModeInfoAtom } from '@/store'
 import type { Dictionary } from '@/typings'
 import range from '@/utils/range'
-import { BookmarkIcon, ClipboardDocumentListIcon, DocumentTextIcon } from '@heroicons/react/24/solid'
+import { BookmarkIcon, DocumentTextIcon, ClipboardDocumentListIcon } from '@heroicons/react/24/outline'
 import { useAtom, useSetAtom } from 'jotai'
 import { useCallback, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import MajesticonsPaperFoldTextLine from '~icons/majesticons/paper-fold-text-line'
-import PajamasReviewList from '~icons/pajamas/review-list'
 
 enum Tab {
   Chapters = 'chapters',
@@ -80,7 +78,7 @@ export default function DictDetail({ dictionary: dict }: { dictionary: Dictionar
               disabled={curTab === Tab.Chapters}
               className={`${curTab === Tab.Chapters ? 'text-primary-foreground bg-primary' : ''} disabled:opacity-100`}
             >
-              <MajesticonsPaperFoldTextLine className="mr-1.5 text-gray-500" />
+              <DocumentTextIcon className="mr-1.5 text-gray-500" />
               章节选择
             </ToggleGroupItem>
             {errorWordData.length > 0 && (

@@ -6,6 +6,7 @@ import { dictionaries } from '@/resources/dictionary'
 import { currentDictInfoAtom } from '@/store'
 import type { Dictionary, LanguageCategoryType } from '@/typings'
 import groupBy, { groupByDictTags } from '@/utils/groupBy'
+import { InformationCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import { useAtomValue } from 'jotai'
 import { createContext, useCallback, useEffect, useMemo } from 'react'
@@ -13,8 +14,6 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import { useNavigate } from 'react-router-dom'
 import type { Updater } from 'use-immer'
 import { useImmer } from 'use-immer'
-import IconInfo from '~icons/ic/outline-info'
-import IconX from '~icons/tabler/x'
 
 export type GalleryState = {
   currentLanguageTab: LanguageCategoryType
@@ -64,7 +63,7 @@ export default function GalleryPage() {
     <Layout>
       <GalleryContext.Provider value={{ state: galleryState, setState: setGalleryState }}>
         <div className="relative mb-auto mt-auto flex w-full flex-1 flex-col overflow-y-auto pl-20">
-          <IconX className="absolute right-20 top-10 mr-2 h-7 w-7 cursor-pointer text-gray-400" onClick={onBack} />
+          <XMarkIcon className="absolute right-20 top-10 mr-2 h-7 w-7 cursor-pointer text-gray-400" onClick={onBack} />
           <div className="mt-20 flex w-full flex-1 flex-col items-center justify-center overflow-y-auto">
             <div className="flex h-full flex-col overflow-y-auto">
               <div className="flex h-20 w-full items-center justify-between pb-6 pr-20">
@@ -79,7 +78,7 @@ export default function GalleryPage() {
                     ))}
                   </div>
                   <div className="flex items-center justify-center pb-10 pt-[20rem] text-gray-500">
-                    <IconInfo className="mr-1 h-5 w-5" />
+                    <InformationCircleIcon className="mr-1 h-5 w-5" />
                     <p className="mr-5 w-10/12 text-xs">
                       本项目的词典数据来自多个开源项目以及社区贡献者的无偿提供。我们深感感激并尊重每一位贡献者的知识产权。
                       这些数据仅供个人学习和研究使用，严禁用于任何商业目的。如果你是数据的版权所有者，并且认为我们的使用方式侵犯了你的权利，请通过网站底部的电子邮件与我们联系。一旦收到有效的版权投诉，我们将在最短的时间内删除相关内容或寻求必要的许可。
