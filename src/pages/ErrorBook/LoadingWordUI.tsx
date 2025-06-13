@@ -1,6 +1,6 @@
 import { LoadingUI } from '@/components/Loading'
+import { ExclamationCircleIcon } from '@heroicons/react/24/solid'
 import type { FC } from 'react'
-import ErrorIcon from '~icons/ic/outline-error'
 
 type LoadingWordUIProps = {
   className?: string
@@ -13,7 +13,7 @@ export const LoadingWordUI: FC<LoadingWordUIProps> = ({ className, isLoading, ha
     <div className={`${className}`}>
       {hasError ? (
         <div className="tooltip !bg-transparent" data-tip="数据加载失败">
-          <ErrorIcon className="text-red-500" />
+          <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
         </div>
       ) : (
         isLoading && <LoadingUI />

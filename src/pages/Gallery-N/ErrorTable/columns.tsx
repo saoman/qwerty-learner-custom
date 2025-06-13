@@ -1,9 +1,8 @@
 import type { TErrorWordData } from '../hooks/useErrorWords'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { ArrowsUpDownIcon, TrashIcon } from '@heroicons/react/24/solid'
 import type { ColumnDef } from '@tanstack/react-table'
-import PhArrowsDownUpFill from '~icons/ph/arrows-down-up-fill'
-import DeleteIcon from '~icons/weui/delete-filled'
 
 export type ErrorColumn = {
   word: string
@@ -20,7 +19,7 @@ export const errorColumns = (onDelete: (word: string) => Promise<void>): ColumnD
       return (
         <Button variant="ghost" className="p-0" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
           单词
-          <PhArrowsDownUpFill className="ml-1.5 h-4 w-4" />
+          <ArrowsUpDownIcon className="ml-1.5 h-4 w-4" />
         </Button>
       )
     },
@@ -37,7 +36,7 @@ export const errorColumns = (onDelete: (word: string) => Promise<void>): ColumnD
       return (
         <Button variant="ghost" className="p-0" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
           错误次数
-          <PhArrowsDownUpFill className="ml-1.5 h-4 w-4" />
+          <ArrowsUpDownIcon className="ml-1.5 h-4 w-4" />
         </Button>
       )
     },
@@ -70,7 +69,9 @@ export const errorColumns = (onDelete: (word: string) => Promise<void>): ColumnD
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
-              <DeleteIcon className="cursor-pointer" onClick={() => onDelete(row.original.word)} />
+              <Button variant="ghost" className="h-8 w-8 p-0" onClick={() => onDelete(row.original.word)}>
+                <TrashIcon className="h-4 w-4" />
+              </Button>
             </TooltipTrigger>
             <TooltipContent>
               <p>Delete Records</p>

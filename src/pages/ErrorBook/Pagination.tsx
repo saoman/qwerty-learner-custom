@@ -1,7 +1,6 @@
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import type { FC } from 'react'
 import { useCallback } from 'react'
-import NextIcon from '~icons/ooui/next-ltr'
-import PrevIcon from '~icons/ooui/next-rtl'
 
 type IPaginationProps = {
   className?: string
@@ -23,18 +22,12 @@ const Pagination: FC<IPaginationProps> = ({ className, page, setPage, totalPages
 
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      <button
-        className="cursor-pointer rounded-full bg-white p-2 text-indigo-500 shadow-md dark:bg-gray-800 dark:text-indigo-300"
-        onClick={prevPage}
-      >
-        <PrevIcon />
+      <button className="my-btn-primary h-12 w-12 rounded-full" onClick={prevPage} title={t('上一页')}>
+        <ChevronLeftIcon className="h-6 w-6" />
       </button>
       <span className="text-black dark:text-white">{`${page} / ${totalPages}`}</span>
-      <button
-        className="cursor-pointer rounded-full bg-white p-2 text-indigo-500 shadow-md dark:bg-gray-800 dark:text-indigo-300"
-        onClick={nextPage}
-      >
-        <NextIcon />
+      <button className="my-btn-primary h-12 w-12 rounded-full" onClick={nextPage} title={t('下一页')}>
+        <ChevronRightIcon className="h-6 w-6" />
       </button>
     </div>
   )

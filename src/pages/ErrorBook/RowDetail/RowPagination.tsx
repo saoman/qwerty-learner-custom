@@ -1,12 +1,11 @@
 import { currentRowDetailAtom } from '../store'
 import type { groupedWordRecords } from '../type'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import { useAtom } from 'jotai'
 import type { FC } from 'react'
 import { useMemo } from 'react'
 import { useCallback } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import NextIcon from '~icons/ooui/next-ltr'
-import PrevIcon from '~icons/ooui/next-rtl'
 
 type IRowPaginationProps = {
   className?: string
@@ -66,15 +65,12 @@ const RowPagination: FC<IRowPaginationProps> = ({ className, allRecords }) => {
 
   return (
     <div className={`-gap-1 flex select-none items-center ${className}`}>
-      <button
-        className="d cursor-pointer rounded-full  p-1  text-indigo-500 focus:outline-none dark:text-indigo-300"
-        onClick={prevRowDetail}
-      >
-        <PrevIcon />
+      <button className="my-btn-primary h-12 w-12 rounded-full" onClick={prevRowDetail} title="上一页">
+        <ChevronLeftIcon className="h-6 w-6" />
       </button>
       <span className="text-sm text-black dark:text-white">{`${currentIndex + 1} / ${allRecords.length}`}</span>
-      <button className="cursor-pointer rounded-full p-1 text-indigo-500  focus:outline-none dark:text-indigo-300" onClick={nextRowDetail}>
-        <NextIcon />
+      <button className="my-btn-primary h-12 w-12 rounded-full" onClick={nextRowDetail} title="下一页">
+        <ChevronRightIcon className="h-6 w-6" />
       </button>
     </div>
   )

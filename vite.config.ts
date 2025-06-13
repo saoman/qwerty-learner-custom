@@ -5,7 +5,7 @@ import jotaiDebugLabel from 'jotai/babel/plugin-debug-label'
 import jotaiReactRefresh from 'jotai/babel/plugin-react-refresh'
 import path from 'node:path'
 import { visualizer } from 'rollup-plugin-visualizer'
-import Icons from 'unplugin-icons/vite'
+// import Icons from 'unplugin-icons/vite'
 import { defineConfig } from 'vite'
 import type { PluginOption } from 'vite'
 
@@ -18,15 +18,15 @@ export default defineConfig(async ({ mode }) => {
     plugins: [
       react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
       visualizer() as PluginOption,
-      Icons({
-        compiler: 'jsx',
-        jsx: 'react',
-        customCollections: {
-          'my-icons': {
-            xiaohongshu: () => fs.readFile('./src/assets/xiaohongshu.svg', 'utf-8'),
-          },
-        },
-      }),
+      // Icons({
+      //   compiler: 'jsx',
+      //   jsx: 'react',
+      //   customCollections: {
+      //     'my-icons': {
+      //       xiaohongshu: () => fs.readFile('./src/assets/xiaohongshu.svg', 'utf-8'),
+      //     },
+      //   },
+      // }),
     ],
     build: {
       minify: true,

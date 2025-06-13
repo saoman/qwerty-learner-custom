@@ -1,11 +1,10 @@
 import { loopWordConfigAtom } from '@/store'
 import type { LoopWordTimesOption } from '@/typings'
 import { Popover, Transition } from '@headlessui/react'
+import { ArrowPathIcon, ArrowPathRoundedSquareIcon } from '@heroicons/react/24/solid'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { useAtom } from 'jotai'
 import { Fragment, useCallback, useState } from 'react'
-import IconRepeat from '~icons/tabler/repeat'
-import IconRepeatOff from '~icons/tabler/repeat-off'
 
 const loopOptions: LoopWordTimesOption[] = [1, 3, 5, 8, Number.MAX_SAFE_INTEGER]
 export default function LoopWordSwitcher() {
@@ -38,10 +37,10 @@ export default function LoopWordSwitcher() {
         >
           <div className="relative">
             {loopTimes === 1 ? (
-              <IconRepeatOff />
+              <ArrowPathRoundedSquareIcon className="h-6 w-6" />
             ) : (
               <>
-                <IconRepeat />
+                <ArrowPathIcon className="h-6 w-6" />
                 <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.7] transform font-mono text-xs font-bold">
                   {loopTimes === Number.MAX_SAFE_INTEGER ? '' : loopTimes}
                 </span>

@@ -18,16 +18,19 @@ import {
 import type { InfoPanelType } from '@/typings'
 import { recordOpenInfoPanelAction } from '@/utils'
 import { Transition } from '@headlessui/react'
+import {
+  BeakerIcon,
+  ChatBubbleLeftRightIcon,
+  CodeBracketIcon,
+  CoffeeIcon,
+  StarIcon,
+  TableCellsIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/solid'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import { useCallback, useContext, useEffect, useMemo } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { useNavigate } from 'react-router-dom'
-import IexportWords from '~icons/icon-park-outline/excel'
-import IconCoffee from '~icons/mdi/coffee'
-import IconXiaoHongShu from '~icons/my-icons/xiaohongshu'
-import IconGithub from '~icons/simple-icons/github'
-import IconWechat from '~icons/simple-icons/wechat'
-import IconX from '~icons/tabler/x'
 
 const ResultScreen = () => {
   // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
@@ -223,7 +226,7 @@ const ResultScreen = () => {
               {`${currentDictInfo.name} ${isReviewMode ? '错题复习' : '第' + (currentChapter + 1) + '章'}`}
             </div>
             <button className="absolute right-7 top-5" onClick={exitButtonHandler}>
-              <IconX className="text-gray-400" />
+              <XMarkIcon className="text-gray-400" />
             </button>
             <div className="mt-10 flex flex-row gap-2 overflow-hidden">
               <div className="flex flex-shrink-0 flex-grow-0 flex-col gap-3 px-4 sm:px-1 md:px-2 lg:px-4">
@@ -246,10 +249,10 @@ const ResultScreen = () => {
                 {!isReviewMode && (
                   <>
                     <ShareButton />
-                    <IexportWords fontSize={18} className="cursor-pointer text-gray-500" onClick={exportWords}></IexportWords>
+                    <TableCellsIcon fontSize={18} className="cursor-pointer text-gray-500" onClick={exportWords}></TableCellsIcon>
                   </>
                 )}
-                <IconXiaoHongShu
+                <ChatBubbleLeftRightIcon
                   fontSize={15}
                   className="cursor-pointer text-gray-500 hover:text-red-500 focus:outline-none"
                   onClick={(e) => {
@@ -267,7 +270,7 @@ const ResultScreen = () => {
                   type="button"
                   title="捐赠我们的项目"
                 >
-                  <IconCoffee fontSize={17} className={`text-gray-500 hover:text-amber-500  focus:outline-none ${styles.imgShake}`} />
+                  <BeakerIcon fontSize={17} className={`text-gray-500 hover:text-amber-500  focus:outline-none ${styles.imgShake}`} />
                 </button>
 
                 <button
@@ -279,11 +282,11 @@ const ResultScreen = () => {
                   type="button"
                   title="加入我们的社区"
                 >
-                  <IconWechat fontSize={16} className="text-gray-500 hover:text-green-500 focus:outline-none" />
+                  <ChatBubbleLeftRightIcon fontSize={16} className="text-gray-500 hover:text-green-500 focus:outline-none" />
                 </button>
 
                 <a href="https://github.com/Kaiyiwing/qwerty-learner" target="_blank" rel="noreferrer" className="leading-[0px]">
-                  <IconGithub fontSize={16} className="text-gray-500 hover:text-green-800 focus:outline-none" />
+                  <CodeBracketIcon fontSize={16} className="text-gray-500 hover:text-green-800 focus:outline-none" />
                 </a>
               </div>
             </div>

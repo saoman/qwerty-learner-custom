@@ -2,11 +2,11 @@ import { DISMISS_START_CARD_DATE_KEY } from '@/constants'
 import { dismissStartCardDateAtom } from '@/store'
 import { IS_MAC_OS, recordStarAction } from '@/utils'
 import { Transition } from '@headlessui/react'
+import { StarIcon as StarOutlineIcon } from '@heroicons/react/24/outline'
+import { StarIcon } from '@heroicons/react/24/solid'
+import { XCircleIcon } from '@heroicons/react/24/solid'
 import { useSetAtom } from 'jotai'
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import IconStar from '~icons/material-symbols/star'
-import IconStarOutline from '~icons/material-symbols/star-outline'
-import IconCircleX from '~icons/tabler/circle-x'
 
 export default function StarCard() {
   const [countdown, setCountdown] = useState(5)
@@ -61,11 +61,11 @@ export default function StarCard() {
                 <div className="flex-0 min-w-0 overflow-hidden text-ellipsis whitespace-nowrap">{`${
                   location.hostname
                 }${location.pathname.replace(/\/$/, '')}`}</div>
-                <IconStarOutline className="ml-4 mr-2 h-4 w-4 flex-shrink-0 text-neutral-400" />
+                <StarOutlineIcon className="ml-4 mr-2 h-4 w-4 flex-shrink-0 text-neutral-400" />
               </div>
               <div className="flex flex-shrink-0 items-center">
                 <div className="ml-0.5">👈</div>
-                <IconStar className="h-4 w-4 text-indigo-600" />
+                <StarIcon className="h-4 w-4 text-indigo-600" />
                 <div className="ml-1 text-gray-600 dark:text-gray-300">点亮它！</div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function StarCard() {
             </span>
           )}
           <button type="button" onClick={onClickCloseStar} title="关闭提示" aria-label="关闭提示">
-            <IconCircleX className="h-5 w-5 text-indigo-400" />
+            <XCircleIcon className="h-5 w-5 text-indigo-400" />
           </button>
         </div>
         <span className="pb-4 text-xl text-gray-600 dark:text-gray-50">

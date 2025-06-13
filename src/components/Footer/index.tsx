@@ -6,22 +6,19 @@ import Tooltip from '@/components/Tooltip'
 import { infoPanelStateAtom } from '@/store'
 import type { InfoPanelType } from '@/typings'
 import { recordOpenInfoPanelAction } from '@/utils'
+import {
+  BeakerIcon,
+  ChatBubbleLeftRightIcon,
+  CodeBracketIcon,
+  CommandLineIcon,
+  EnvelopeIcon,
+  FlagIcon,
+  LinkIcon,
+} from '@heroicons/react/24/solid'
 import { useAtom } from 'jotai'
 import type React from 'react'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import IconMail from '~icons/material-symbols/mail'
-import IconCoffee2 from '~icons/mdi/coffee'
-import IconXiaoHongShu from '~icons/my-icons/xiaohongshu'
-import RiLinksLine from '~icons/ri/links-line'
-import IconTwitter from '~icons/ri/twitter-fill'
-import IconGithub from '~icons/simple-icons/github'
-import IconVisualstudiocode from '~icons/simple-icons/visualstudiocode'
-import IconWechat2 from '~icons/simple-icons/wechat'
-import IconWechat from '~icons/tabler/brand-wechat'
-import IconCoffee from '~icons/tabler/coffee'
-import IconTerminal2 from '~icons/tabler/terminal-2'
-import IconFlagChina from '~icons/twemoji/flag-china'
 
 const Footer: React.FC = () => {
   const [infoPanelState, setInfoPanelState] = useAtom(infoPanelStateAtom)
@@ -47,7 +44,7 @@ const Footer: React.FC = () => {
       <InfoPanel
         openState={infoPanelState.donate}
         title="Buy us a coffee"
-        icon={IconCoffee}
+        icon={BeakerIcon}
         buttonClassName="bg-amber-500 hover:bg-amber-400"
         iconClassName="text-amber-500 bg-amber-100 dark:text-amber-300 dark:bg-amber-500"
         onClose={() => handleCloseInfoPanel('donate')}
@@ -77,7 +74,7 @@ const Footer: React.FC = () => {
       <InfoPanel
         openState={infoPanelState.vsc}
         title="VSCode 摸🐟插件"
-        icon={IconTerminal2}
+        icon={CommandLineIcon}
         buttonClassName="bg-sky-500 hover:bg-sky-400"
         iconClassName="text-sky-500 bg-sky-100 dark:text-sky-300 dark:bg-sky-500"
         onClose={() => handleCloseInfoPanel('vsc')}
@@ -99,7 +96,7 @@ const Footer: React.FC = () => {
       <InfoPanel
         openState={infoPanelState.community}
         title="用户反馈社群"
-        icon={IconWechat}
+        icon={ChatBubbleLeftRightIcon}
         buttonClassName="bg-green-500 hover:bg-green-400"
         iconClassName="text-green-500 bg-green-100 dark:text-green-300 dark:bg-green-500"
         onClose={() => handleCloseInfoPanel('community')}
@@ -125,7 +122,7 @@ const Footer: React.FC = () => {
       <InfoPanel
         openState={infoPanelState.redBook}
         title="小红书社群"
-        icon={IconXiaoHongShu}
+        icon={ChatBubbleLeftRightIcon}
         buttonClassName="bg-red-500 hover:bg-red-400"
         iconClassName="text-red-500 bg-red-100 dark:text-red-600 dark:bg-red-500"
         onClose={() => handleCloseInfoPanel('redBook')}
@@ -143,13 +140,13 @@ const Footer: React.FC = () => {
         </p>
         <br />
         <img className="ml-1 w-5/12 " src={redBookCode} alt="redBook" />
-        <p className="text-sm text-gray-500 dark:text-gray-400">Tips: 从小红书“我”的左上角点击 三 找到 扫一扫</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">Tips: 从小红书&quot;我&quot;的左上角点击 三 找到 扫一扫</p>
         <br />
       </InfoPanel>
 
       <footer className="mb-1 mt-4 flex w-full items-center justify-center gap-2.5 text-sm ease-in" onClick={(e) => e.currentTarget.blur()}>
         <a href="https://github.com/Kaiyiwing/qwerty-learner" target="_blank" rel="noreferrer" aria-label="前往 GitHub 项目主页">
-          <IconGithub fontSize={15} className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100" />
+          <CodeBracketIcon className="h-4 w-4 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100" />
         </a>
 
         <button
@@ -161,7 +158,7 @@ const Footer: React.FC = () => {
           }}
           aria-label="加入我们的小红书社群"
         >
-          <IconXiaoHongShu fontSize={14} className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-500" />
+          <ChatBubbleLeftRightIcon className="h-4 w-4 text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-500" />
         </button>
 
         <button
@@ -173,11 +170,11 @@ const Footer: React.FC = () => {
           }}
           aria-label="加入我们的微信用户群"
         >
-          <IconWechat2 fontSize={16} className="text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-500" />
+          <ChatBubbleLeftRightIcon className="h-4 w-4 text-gray-500 hover:text-green-500 dark:text-gray-400 dark:hover:text-green-500" />
         </button>
 
         <a href="https://twitter.com/real_kai42" target="_blank" title="x" rel="noreferrer">
-          <IconTwitter fontSize={16} className="text-gray-500 hover:text-[#1DA1F2] dark:text-gray-400 dark:hover:text-[#1DA1F2]" />
+          <LinkIcon className="h-4 w-4 text-gray-500 hover:text-[#1DA1F2] dark:text-gray-400 dark:hover:text-[#1DA1F2]" />
         </a>
         <button
           className="cursor-pointer focus:outline-none "
@@ -188,7 +185,7 @@ const Footer: React.FC = () => {
           }}
           aria-label="考虑捐赠我们"
         >
-          <IconCoffee2 fontSize={16} className="text-gray-500 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-500" />
+          <BeakerIcon className="h-4 w-4 text-gray-500 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-500" />
         </button>
 
         <button
@@ -198,9 +195,9 @@ const Footer: React.FC = () => {
             handleOpenInfoPanel('vsc')
             e.currentTarget.blur()
           }}
-          aria-label="使用 Visual Studio Code 插件版 Qwerty Learner"
+          aria-label="VSCode 摸🐟插件"
         >
-          <IconVisualstudiocode fontSize={14} className="text-gray-500 hover:text-sky-500 dark:text-gray-400 dark:hover:text-sky-500" />
+          <CommandLineIcon className="h-4 w-4 text-gray-500 hover:text-sky-500 dark:text-gray-400 dark:hover:text-sky-500" />
         </button>
 
         <a
@@ -210,15 +207,15 @@ const Footer: React.FC = () => {
           onClick={(e) => e.currentTarget.blur()}
           aria-label="发送邮件到 me@kaiyi.cool"
         >
-          <IconMail fontSize={16} className="text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400" />
+          <EnvelopeIcon className="h-4 w-4 text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400" />
         </a>
         <a rel="noreferrer" className="cursor-pointer focus:outline-none" onClick={() => navigate('/friend-links')} aria-label="查看友链">
-          <RiLinksLine fontSize={14} className="text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400" />
+          <LinkIcon className="h-4 w-4 text-gray-500 hover:text-indigo-400 dark:text-gray-400 dark:hover:text-indigo-400" />
         </a>
 
         <Tooltip content="中国大陆镜像">
           <a href="https://kaiyiwing.gitee.io/qwerty-learner" target="_self" title="前往中国大陆镜像">
-            <IconFlagChina fontSize={16} />
+            <FlagIcon className="h-4 w-4 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100" />
           </a>
         </Tooltip>
 

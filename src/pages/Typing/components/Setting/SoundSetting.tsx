@@ -1,17 +1,17 @@
 import styles from './index.module.css'
 import { keySoundResources } from '@/resources/soundResource'
 import { hintSoundsConfigAtom, keySoundsConfigAtom, pronunciationConfigAtom } from '@/store'
+import { soundAtom } from '@/store'
 import type { SoundResource } from '@/typings'
 import { toFixedNumber } from '@/utils'
 import { playKeySoundResource } from '@/utils/sounds/keySounds'
 import { Listbox, Switch, Transition } from '@headlessui/react'
+import { CheckIcon, ChevronDownIcon, SpeakerWaveIcon } from '@heroicons/react/24/solid'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import * as Slider from '@radix-ui/react-slider'
 import { useAtom } from 'jotai'
 import { Fragment, useCallback } from 'react'
-import IconCheck from '~icons/tabler/check'
-import IconChevronDown from '~icons/tabler/chevron-down'
-import IconEar from '~icons/tabler/ear'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 export default function SoundSetting() {
   const [pronunciationConfig, setPronunciationConfig] = useAtom(pronunciationConfigAtom)
@@ -118,6 +118,10 @@ export default function SoundSetting() {
     },
     [setHintSoundsConfig],
   )
+
+  const toggleSound = useCallback(() => {
+    // Implementation of toggleSound function
+  }, [])
 
   return (
     <ScrollArea.Root className="flex-1 select-none overflow-y-auto ">
@@ -245,7 +249,7 @@ export default function SoundSetting() {
                   <Listbox.Button className="listbox-button w-60">
                     <span>{keySoundsConfig.resource.name}</span>
                     <span>
-                      <IconChevronDown className="focus:outline-none" />
+                      <ChevronDownIcon className="focus:outline-none" />
                     </span>
                   </Listbox.Button>
                   <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -258,10 +262,10 @@ export default function SoundSetting() {
                                 <span>{keySoundResource.name}</span>
                                 {selected ? (
                                   <span className="listbox-options-icon">
-                                    <IconCheck className="focus:outline-none" />
+                                    <CheckIcon className="focus:outline-none" />
                                   </span>
                                 ) : null}
-                                <IconEar
+                                <SpeakerWaveIcon
                                   onClick={(e) => {
                                     e.stopPropagation()
                                     onPlayKeySound(keySoundResource)
@@ -314,6 +318,9 @@ export default function SoundSetting() {
         </div>
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar className="flex touch-none select-none bg-transparent " orientation="vertical"></ScrollArea.Scrollbar>
+      <button className="my-btn-primary h-12 w-12 rounded-full" onClick={toggleSound} title={t('声音设置')}>
+        <SpeakerWaveIcon className="h-6 w-6" />
+      </button>
     </ScrollArea.Root>
   )
 }

@@ -1,12 +1,15 @@
 import { hintSoundsConfigAtom, keySoundsConfigAtom } from '@/store'
+import { soundAtom } from '@/store'
 import { Popover, Switch, Transition } from '@headlessui/react'
+import { SpeakerWaveIcon, SpeakerXMarkIcon } from '@heroicons/react/24/solid'
 import { useAtom } from 'jotai'
 import { Fragment, useCallback } from 'react'
-import IconSpeakerWave from '~icons/heroicons/speaker-wave-solid'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 export default function SoundSwitcher() {
   const [keySoundsConfig, setKeySoundsConfig] = useAtom(keySoundsConfigAtom)
   const [hintSoundsConfig, setHintSoundsConfig] = useAtom(hintSoundsConfigAtom)
+  const [isSoundOn, setIsSoundOn] = useAtom(soundAtom)
 
   const onChangeKeySound = useCallback(
     (checked: boolean) => {
@@ -22,22 +25,17 @@ export default function SoundSwitcher() {
     [setHintSoundsConfig],
   )
 
+  const toggleSound = useCallback(() => {
+    setIsSoundOn(!isSoundOn)
+  }, [setIsSoundOn, isSoundOn])
+
   return (
     <Popover className="relative">
       {({ open }) => (
         <>
-          <Popover.Button
-            className={`flex items-center justify-center rounded p-[2px] text-lg text-indigo-500 outline-none transition-colors duration-300 ease-in-out hover:bg-indigo-400 hover:text-white  ${
-              open ? 'bg-indigo-500 text-white' : ''
-            }`}
-            onFocus={(e) => {
-              e.target.blur()
-            }}
-            aria-label="音效设置"
-            title="音效设置"
-          >
-            <IconSpeakerWave className="icon" />
-          </Popover.Button>
+          <button className="my-btn-primary h-12 w-12 rounded-full" onClick={toggleSound} title="切换声音">
+            {isSoundOn ? <SpeakerWaveIcon className="h-6 w-6" /> : <SpeakerXMarkIcon className="h-6 w-6" />}
+          </button>
 
           <Transition
             as={Fragment}

@@ -1,9 +1,8 @@
 import sticker2 from '@/assets/sticker2.jpg'
 import sticker1 from '@/assets/sticker.jpg'
+import { DocumentTextIcon, InformationCircleIcon } from '@heroicons/react/24/solid'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
-import IconInfo from '~icons/ic/outline-info'
-import SolarStickerSmileSquareOutline from '~icons/solar/sticker-smile-square-outline'
 
 export const StickerButton = ({ className }: { className?: string }) => {
   return (
@@ -14,7 +13,7 @@ export const StickerButton = ({ className }: { className?: string }) => {
         dark:text-gray-300
         ${className}`}
       >
-        <SolarStickerSmileSquareOutline className="mb-[2px] mr-2 inline-block text-sm " />
+        <DocumentTextIcon className="mb-[2px] mr-2 inline-block text-sm " />
         查看贴纸
       </div>
       <Tooltip
@@ -28,7 +27,7 @@ export const StickerButton = ({ className }: { className?: string }) => {
           <img src={sticker2} alt="alipay" className=" h-44 rounded shadow-lg shadow-gray-300 dark:shadow-gray-700" />
         </div>
         <span className="mt-3 text-xs font-bold text-gray-500">
-          <IconInfo className="mb-[3px] mr-1 inline-block" />
+          <InformationCircleIcon className="mb-[3px] mr-1 inline-block" />
           此贴纸非商品，仅用于感谢您的捐赠，不可用于任何商业用途
         </span>
       </Tooltip>

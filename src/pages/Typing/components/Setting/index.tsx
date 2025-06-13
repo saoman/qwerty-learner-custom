@@ -4,14 +4,10 @@ import DataSetting from './DataSetting'
 import SoundSetting from './SoundSetting'
 import ViewSetting from '@/pages/Typing/components/Setting/ViewSetting'
 import { Dialog, Tab, Transition } from '@headlessui/react'
+import { AdjustmentsHorizontalIcon, CogIcon, SpeakerWaveIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Cog6ToothIcon, EyeIcon } from '@heroicons/react/24/solid'
 import classNames from 'classnames'
 import { Fragment, useContext, useState } from 'react'
-import IconCog6Tooth from '~icons/heroicons/cog-6-tooth-solid'
-import IconEye from '~icons/heroicons/eye-solid'
-import IconAdjustmentsHorizontal from '~icons/tabler/adjustments-horizontal'
-import IconDatabaseCog from '~icons/tabler/database-cog'
-import IconEar from '~icons/tabler/ear'
-import IconX from '~icons/tabler/x'
 
 export default function Setting() {
   const [isOpen, setIsOpen] = useState(false)
@@ -38,7 +34,7 @@ export default function Setting() {
         }`}
         title="打开设置对话框"
       >
-        <IconCog6Tooth className="icon" />
+        <Cog6ToothIcon className="h-6 w-6" />
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -70,7 +66,7 @@ export default function Setting() {
                   <div className="relative flex h-22 items-end justify-between rounded-t-lg border-b border-neutral-100 bg-stone-50 px-6 py-3 dark:border-neutral-700 dark:bg-gray-900">
                     <span className="text-3xl font-bold text-gray-600">设置</span>
                     <button type="button" onClick={() => setIsOpen(false)} title="关闭对话框">
-                      <IconX className="absolute right-7 top-5 cursor-pointer text-gray-400" />
+                      <XMarkIcon className="absolute right-7 top-5 cursor-pointer text-gray-400" />
                     </button>
                   </div>
 
@@ -85,7 +81,7 @@ export default function Setting() {
                             )
                           }
                         >
-                          <IconEar className="mr-2 text-neutral-500  dark:text-neutral-300" />
+                          <SpeakerWaveIcon className="mr-2 text-neutral-500  dark:text-neutral-300" />
                           <span className="text-neutral-500 dark:text-neutral-300 ">音效设置</span>
                         </Tab>
                         <Tab
@@ -96,7 +92,7 @@ export default function Setting() {
                             )
                           }
                         >
-                          <IconAdjustmentsHorizontal className="mr-2 text-neutral-500  dark:text-neutral-300" />
+                          <AdjustmentsHorizontalIcon className="mr-2 text-neutral-500  dark:text-neutral-300" />
                           <span className="text-neutral-500 dark:text-neutral-300">高级设置</span>
                         </Tab>
                         <Tab
@@ -107,7 +103,7 @@ export default function Setting() {
                             )
                           }
                         >
-                          <IconEye className="mr-2 text-neutral-500  dark:text-neutral-300" />
+                          <EyeIcon className="mr-2 text-neutral-500  dark:text-neutral-300" />
                           <span className="text-neutral-500 dark:text-neutral-300">显示设置</span>
                         </Tab>
                         <Tab
@@ -118,7 +114,7 @@ export default function Setting() {
                             )
                           }
                         >
-                          <IconDatabaseCog className="mr-2 text-neutral-500  dark:text-neutral-300" />
+                          <CogIcon className="mr-2 text-neutral-500  dark:text-neutral-300" />
                           <span className="text-neutral-500 dark:text-neutral-300">数据设置</span>
                         </Tab>
                       </Tab.List>

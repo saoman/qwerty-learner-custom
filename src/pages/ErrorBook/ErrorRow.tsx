@@ -5,10 +5,10 @@ import type { groupedWordRecords } from './type'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { idDictionaryMap } from '@/resources/dictionary'
 import { recordErrorBookAction } from '@/utils'
+import { TrashIcon } from '@heroicons/react/24/solid'
 import { useSetAtom } from 'jotai'
 import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
-import DeleteIcon from '~icons/weui/delete-filled'
 
 type IErrorRowProps = {
   record: groupedWordRecords
@@ -37,7 +37,7 @@ const ErrorRow: FC<IErrorRowProps> = ({ record, onDelete, onWordUpdate }) => {
 
   return (
     <li
-      className="opacity-85 flex w-full cursor-pointer items-center justify-between rounded-lg bg-white px-6 py-3 text-black shadow-md dark:bg-gray-800 dark:text-white"
+      className="flex w-full cursor-pointer items-center justify-between rounded-lg bg-white px-6 py-3 text-black opacity-85 shadow-md dark:bg-gray-800 dark:text-white"
       onClick={onClick}
     >
       <span className="basis-2/12 break-normal">{record.word}</span>
@@ -56,7 +56,9 @@ const ErrorRow: FC<IErrorRowProps> = ({ record, onDelete, onWordUpdate }) => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <DeleteIcon />
+              <button className="my-btn-primary h-12 w-12 rounded-full" onClick={onDelete} title={t('删除')}>
+                <TrashIcon className="h-6 w-6" />
+              </button>
             </TooltipTrigger>
             <TooltipContent>
               <p>Delete Records</p>

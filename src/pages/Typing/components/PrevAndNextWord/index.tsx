@@ -2,10 +2,9 @@ import { TypingContext, TypingStateActionType } from '../../store'
 import Tooltip from '@/components/Tooltip'
 import { currentDictInfoAtom, wordDictationConfigAtom } from '@/store'
 import { CTRL } from '@/utils'
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid'
 import { useAtomValue } from 'jotai'
 import { useCallback, useContext, useMemo } from 'react'
-import IconPrev from '~icons/tabler/arrow-narrow-left'
-import IconNext from '~icons/tabler/arrow-narrow-right'
 
 export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
   // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
@@ -44,7 +43,7 @@ export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
             onClick={onClickWord}
             className="flex max-w-xs cursor-pointer select-none items-center text-gray-700 opacity-60 duration-200 ease-in-out hover:opacity-100 dark:text-gray-400"
           >
-            {type === 'prev' && <IconPrev className="mr-4 shrink-0 grow-0 text-2xl" />}
+            {type === 'prev' && <ArrowLeftIcon className="mr-4 shrink-0 grow-0 text-2xl" />}
 
             <div className={`grow-1 flex w-full flex-col ${type === 'next' ? 'items-end text-right' : ''}`}>
               <p
@@ -58,7 +57,7 @@ export default function PrevAndNextWord({ type }: LastAndNextWordProps) {
                 <p className="line-clamp-1 max-w-full text-sm font-normal text-gray-600 dark:text-gray-500">{word.trans.join('；')}</p>
               )}
             </div>
-            {type === 'next' && <IconNext className="ml-4 shrink-0 grow-0 text-2xl" />}
+            {type === 'next' && <ArrowRightIcon className="ml-4 shrink-0 grow-0 text-2xl" />}
           </div>
         </Tooltip>
       ) : (

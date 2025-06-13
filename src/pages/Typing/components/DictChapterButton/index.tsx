@@ -2,10 +2,10 @@ import Tooltip from '@/components/Tooltip'
 import { currentChapterAtom, currentDictInfoAtom, isReviewModeAtom } from '@/store'
 import range from '@/utils/range'
 import { Listbox, Transition } from '@headlessui/react'
+import { CheckIcon } from '@heroicons/react/24/solid'
 import { useAtom, useAtomValue } from 'jotai'
 import { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
-import IconCheck from '~icons/tabler/check'
 
 export const DictChapterButton = () => {
   const currentDictInfo = useAtomValue(currentDictInfoAtom)
@@ -45,7 +45,7 @@ export const DictChapterButton = () => {
                       <div className="group flex cursor-pointer items-center justify-between">
                         {selected ? (
                           <span className="listbox-options-icon">
-                            <IconCheck className="focus:outline-none" />
+                            <CheckIcon className="focus:outline-none" />
                           </span>
                         ) : null}
                         <span>第 {index + 1} 章</span>

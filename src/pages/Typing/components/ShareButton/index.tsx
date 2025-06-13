@@ -1,7 +1,8 @@
 import SharePicDialog from './SharePicDialog'
 import { recordShareAction } from '@/utils'
+import { ShareIcon } from '@heroicons/react/24/solid'
 import { useCallback, useMemo, useState } from 'react'
-import IconShare2 from '~icons/tabler/share-2'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 export default function ShareButton() {
   const [isShowSharePanel, setIsShowSharePanel] = useState(false)
@@ -23,13 +24,8 @@ export default function ShareButton() {
     <>
       {isShowSharePanel && <SharePicDialog showState={isShowSharePanel} setShowState={setIsShowSharePanel} randomChoose={randomChoose} />}
 
-      <button
-        type="button"
-        className="cursor-pointer text-xl text-gray-500 hover:text-indigo-400"
-        onClick={onClickShare}
-        title="分享你的成绩给朋友"
-      >
-        <IconShare2 />
+      <button className="my-btn-primary h-12 w-12 rounded-full" onClick={onClickShare} title="分享你的成绩给朋友">
+        <ShareIcon className="h-6 w-6" />
       </button>
     </>
   )

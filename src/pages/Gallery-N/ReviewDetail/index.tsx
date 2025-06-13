@@ -4,10 +4,10 @@ import { currentChapterAtom, currentDictIdAtom, reviewModeInfoAtom } from '@/sto
 import type { Dictionary } from '@/typings'
 import { timeStamp2String } from '@/utils'
 import { generateNewWordReviewRecord, useGetLatestReviewRecord } from '@/utils/db/review-record'
+import { ExclamationTriangleIcon } from '@heroicons/react/24/solid'
 import * as Progress from '@radix-ui/react-progress'
 import { useSetAtom } from 'jotai'
 import { useNavigate } from 'react-router-dom'
-import MdiRobotAngry from '~icons/mdi/robot-angry'
 
 export function ReviewDetail({ errorData, dict }: { errorData: TErrorWordData[]; dict: Dictionary }) {
   const latestReviewRecord = useGetLatestReviewRecord(dict.id)
@@ -36,7 +36,7 @@ export function ReviewDetail({ errorData, dict }: { errorData: TErrorWordData[];
   return (
     <div className="flex h-full flex-col items-center justify-around px-60">
       <div>
-        <MdiRobotAngry fontSize={30} className="text-indigo-300 " />
+        <ExclamationTriangleIcon className="h-6 w-6 text-indigo-300" />
         <blockquote>
           <p className="text-lg font-medium text-gray-600 dark:text-gray-300">
             我们将使用您在该词典的历史练习数据、错误次数、练习时间来智能生成练习列表

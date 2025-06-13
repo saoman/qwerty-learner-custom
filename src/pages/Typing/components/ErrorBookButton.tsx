@@ -1,7 +1,7 @@
 import { recordErrorBookAction } from '@/utils'
+import { BookOpenIcon } from '@heroicons/react/24/solid'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import IconBook from '~icons/bxs/book'
 
 const ErrorBookButton = () => {
   const navigate = useNavigate()
@@ -18,7 +18,7 @@ const ErrorBookButton = () => {
       className={`flex items-center justify-center rounded p-[2px] text-lg text-indigo-500 outline-none transition-colors duration-300 ease-in-out hover:bg-indigo-400 hover:text-white`}
       title="查看错题本"
     >
-      <IconBook className="icon" />
+      <BookOpenIcon className="h-6 w-6" />
     </button>
   )
 }

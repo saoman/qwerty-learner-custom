@@ -6,10 +6,10 @@ import { DONATE_DATE } from '@/constants'
 import { reportDonateCard } from '@/utils'
 import noop from '@/utils/noop'
 import { Dialog, Transition } from '@headlessui/react'
+import { SparklesIcon } from '@heroicons/react/24/solid'
 import dayjs from 'dayjs'
 import type React from 'react'
 import { Fragment, useLayoutEffect, useMemo, useState } from 'react'
-import IconParty from '~icons/logos/partytown-icon'
 
 export const DonateCard = () => {
   const [show, setShow] = useState(false)
@@ -116,9 +116,9 @@ export const DonateCard = () => {
                       <HighlightedText> {dayFromFirstWord} </HighlightedText> 天，一起完成了
                       <HighlightedText> {wordNumber} </HighlightedText>
                       词的练习，帮助您纠正了 <HighlightedText> {sumWrongCount} </HighlightedText>次错误输入，让我们一起为您的进步欢呼
-                      <IconParty className="ml-2 inline-block" fontSize={16} />
-                      <IconParty className="inline-block" fontSize={16} />
-                      <IconParty className="inline-block" fontSize={16} />
+                      <SparklesIcon className="ml-2 inline-block h-4 w-4" />
+                      <SparklesIcon className="inline-block h-4 w-4" />
+                      <SparklesIcon className="inline-block h-4 w-4" />
                       <br />
                     </p>
                     <p className="mx-auto px-4 indent-4">

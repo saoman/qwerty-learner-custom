@@ -10,10 +10,10 @@ import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { currentChapterAtom, currentDictIdAtom, reviewModeInfoAtom } from '@/store'
 import type { Dictionary } from '@/typings'
 import range from '@/utils/range'
+import { BookmarkIcon, ClipboardDocumentListIcon, DocumentTextIcon } from '@heroicons/react/24/solid'
 import { useAtom, useSetAtom } from 'jotai'
 import { useCallback, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import IcOutlineCollectionsBookmark from '~icons/ic/outline-collections-bookmark'
 import MajesticonsPaperFoldTextLine from '~icons/majesticons/paper-fold-text-line'
 import PajamasReviewList from '~icons/pajamas/review-list'
 
@@ -90,7 +90,7 @@ export default function DictDetail({ dictionary: dict }: { dictionary: Dictionar
                   disabled={curTab === Tab.Errors}
                   className={`${curTab === Tab.Errors ? 'text-primary-foreground bg-primary' : ''} disabled:opacity-100`}
                 >
-                  <IcOutlineCollectionsBookmark className="mr-1.5 text-gray-500" />
+                  <BookmarkIcon className="mr-1.5 text-gray-500" />
                   查看错题
                 </ToggleGroupItem>
                 <ToggleGroupItem
@@ -98,7 +98,7 @@ export default function DictDetail({ dictionary: dict }: { dictionary: Dictionar
                   disabled={curTab === Tab.Review}
                   className={`${curTab === Tab.Review ? 'text-primary-foreground bg-primary' : ''} disabled:opacity-100`}
                 >
-                  <PajamasReviewList className="mr-1.5 text-gray-500" />
+                  <ClipboardDocumentListIcon className="mr-1.5 text-gray-500" />
                   错题回顾
                 </ToggleGroupItem>
               </>

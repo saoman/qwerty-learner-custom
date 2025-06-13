@@ -1,8 +1,7 @@
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
 import classNames from 'classnames'
 import type { FC } from 'react'
 import { useCallback } from 'react'
-import DownIcon from '~icons/fa/sort-down'
-import UPIcon from '~icons/fa/sort-up'
 
 type IHeadWrongNumberProps = {
   className?: string
@@ -26,18 +25,9 @@ const HeadWrongNumber: FC<IHeadWrongNumberProps> = ({ className, sortType, setSo
     <span className={`relative cursor-pointer ${className}`} onClick={onClick}>
       错误次数
       <div className="absolute -right-2 bottom-0 top-0 flex flex-col items-center justify-center text-[12px]">
-        <UPIcon
-          className={classNames('-mb-2 ', {
-            'text-indigo-500': sortType === 'asc',
-            'text-gray-400': sortType !== 'asc',
-          })}
-        />
-        <DownIcon
-          className={classNames({
-            'text-indigo-500': sortType === 'desc',
-            'text-gray-400': sortType !== 'desc',
-          })}
-        />
+        <button className="my-btn-primary h-12 w-12 rounded-full" onClick={onClick} title="排序">
+          {sortType === 'asc' ? <ChevronUpIcon className="h-6 w-6" /> : <ChevronDownIcon className="h-6 w-6" />}
+        </button>
       </div>
     </span>
   )

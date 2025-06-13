@@ -1,8 +1,7 @@
-import standTypingHandPosition from '@/assets/standard_typing_hand_position.png'
+import standTypingHandPosition from '@/assets/stand-typing-hand-position.png'
 import { Dialog, Transition } from '@headlessui/react'
+import { ComputerDesktopIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { Fragment, useState } from 'react'
-import IconKeyboard from '~icons/ic/round-keyboard'
-import IconX from '~icons/tabler/x'
 
 export default function HandPositionIllustration() {
   const [isOpen, setIsOpen] = useState(false)
@@ -17,14 +16,8 @@ export default function HandPositionIllustration() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={openModal}
-        className={`flex items-center justify-center rounded p-[2px] text-lg text-indigo-500 outline-none transition-colors duration-300 ease-in-out hover:bg-indigo-400 hover:text-white  ${
-          isOpen && 'bg-indigo-500 text-white'
-        }`}
-      >
-        <IconKeyboard className="icon"></IconKeyboard>
+      <button className="my-btn-primary h-12 w-12 rounded-full" onClick={openModal} title="手位图">
+        <ComputerDesktopIcon className="h-6 w-6" />
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -54,7 +47,7 @@ export default function HandPositionIllustration() {
               >
                 <Dialog.Panel className="w-200  transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-gray-800">
                   <button type="button" onClick={() => setIsOpen(false)} title="关闭对话框">
-                    <IconX className="absolute right-7 top-5 cursor-pointer text-gray-400" />
+                    <XMarkIcon className="absolute right-7 top-5 cursor-pointer text-gray-400" />
                   </button>
                   <Dialog.Title as="h3" className="text-center text-xl font-medium leading-6 text-gray-800 dark:text-gray-200">
                     推荐打字指法图示

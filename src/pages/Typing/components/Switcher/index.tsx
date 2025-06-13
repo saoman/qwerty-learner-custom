@@ -9,17 +9,17 @@ import WordDictationSwitcher from '../WordDictationSwitcher'
 import Tooltip from '@/components/Tooltip'
 import { isOpenDarkModeAtom } from '@/store'
 import { CTRL } from '@/utils'
+import { LanguageIcon, NoSymbolIcon } from '@heroicons/react/24/outline'
+import { MoonIcon, SunIcon } from '@heroicons/react/24/solid'
 import { useAtom } from 'jotai'
-import { useContext } from 'react'
+import { useCallback, useContext } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import IconMoon from '~icons/heroicons/moon-solid'
-import IconSun from '~icons/heroicons/sun-solid'
-import IconLanguage from '~icons/tabler/language'
-import IconLanguageOff from '~icons/tabler/language-off'
+import { useTranslation } from 'react-i18next'
 
 export default function Switcher() {
   const [isOpenDarkMode, setIsOpenDarkMode] = useAtom(isOpenDarkModeAtom)
   const { state, dispatch } = useContext(TypingContext) ?? {}
+  const { t } = useTranslation()
 
   const changeDarkModeState = () => {
     setIsOpenDarkMode((old) => !old)
@@ -63,7 +63,7 @@ export default function Switcher() {
           }}
           aria-label={`开关释义显示（${CTRL} + Shift + V）`}
         >
-          {state?.isTransVisible ? <IconLanguage /> : <IconLanguageOff />}
+          {state?.isTransVisible ? <LanguageIcon className="h-6 w-6" /> : <NoSymbolIcon className="h-6 w-6" />}
         </button>
       </Tooltip>
 
@@ -76,16 +76,8 @@ export default function Switcher() {
       </Tooltip>
 
       <Tooltip className="h-7 w-7" content="开关深色模式">
-        <button
-          className={`p-[2px] text-lg text-indigo-500 focus:outline-none`}
-          type="button"
-          onClick={(e) => {
-            changeDarkModeState()
-            e.currentTarget.blur()
-          }}
-          aria-label="开关深色模式"
-        >
-          {isOpenDarkMode ? <IconMoon className="icon" /> : <IconSun className="icon" />}
+        <button className="my-btn-primary h-12 w-12 rounded-full" onClick={changeDarkModeState} title={t('切换深色模式')}>
+          {isOpenDarkMode ? <SunIcon className="h-6 w-6" /> : <MoonIcon className="h-6 w-6" />}
         </button>
       </Tooltip>
       <Tooltip className="h-7 w-7" content="指法图示">

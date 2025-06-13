@@ -8,11 +8,11 @@ import { currentRowDetailAtom } from './store'
 import type { groupedWordRecords } from './type'
 import { db, useDeleteWordRecord } from '@/utils/db'
 import type { WordRecord } from '@/utils/db/record'
+import { XMarkIcon } from '@heroicons/react/24/solid'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import { useAtomValue } from 'jotai'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import IconX from '~icons/tabler/x'
 
 export function ErrorBook() {
   const [groupedRecords, setGroupedRecords] = useState<groupedWordRecords[]>([])
@@ -104,7 +104,9 @@ export function ErrorBook() {
       <div className={`relative flex h-screen w-full flex-col items-center pb-4 ease-in ${currentRowDetail && 'blur-sm'}`}>
         <div className="mr-8 mt-4 flex w-auto items-center justify-center self-end">
           <h1 className="font-lighter mr-4 w-auto self-end text-gray-500 opacity-70">Tip: 点击错误单词查看详细信息 </h1>
-          <IconX className="h-7 w-7 cursor-pointer text-gray-400" onClick={onBack} />
+          <button className="my-btn-primary h-12 w-12 rounded-full" onClick={onBack} title="关闭">
+            <XMarkIcon className="h-6 w-6" />
+          </button>
         </div>
 
         <div className="flex w-full flex-1 select-text items-start justify-center overflow-hidden">

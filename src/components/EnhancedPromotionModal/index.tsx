@@ -2,11 +2,10 @@ import noop from '../../utils/noop'
 import { hasSeenEnhancedPromotionAtom } from '@/store'
 import { trackPromotionEvent } from '@/utils/trackEvent'
 import { Dialog, Transition } from '@headlessui/react'
+import { StarIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useAtom } from 'jotai'
 import type React from 'react'
 import { Fragment, useEffect, useState } from 'react'
-import IconStar from '~icons/heroicons/star-solid'
-import IconX from '~icons/tabler/x'
 
 const EnhancedPromotionModal: React.FC = () => {
   const [hasSeenPromotion, setHasSeenPromotion] = useAtom(hasSeenEnhancedPromotionAtom)
@@ -80,7 +79,7 @@ const EnhancedPromotionModal: React.FC = () => {
                     className="rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-300"
                     title="关闭"
                   >
-                    <IconX className="h-5 w-5" />
+                    <XMarkIcon className="h-5 w-5" />
                   </button>
                 </div>
 
@@ -89,7 +88,7 @@ const EnhancedPromotionModal: React.FC = () => {
                   {/* Icon and title */}
                   <div className="mb-6 text-center">
                     <div className="mx-auto mb-4 flex h-20 w-20 animate-pulse items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg">
-                      <IconStar className="h-10 w-10 text-white" />
+                      <StarIcon className="h-10 w-10 text-white" />
                     </div>
                     <h3 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-3xl font-bold text-transparent">
                       体验 QwertyLearner.ai

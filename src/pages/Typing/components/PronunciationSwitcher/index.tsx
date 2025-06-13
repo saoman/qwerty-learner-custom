@@ -5,10 +5,9 @@ import type { PronunciationType } from '@/typings'
 import { PRONUNCIATION_PHONETIC_MAP } from '@/typings'
 import { CTRL } from '@/utils'
 import { Listbox, Popover, Switch, Transition } from '@headlessui/react'
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
 import { useAtom, useAtomValue } from 'jotai'
 import { Fragment, useCallback, useEffect, useMemo } from 'react'
-import IconCheck from '~icons/tabler/check'
-import IconChevronDown from '~icons/tabler/chevron-down'
 
 const PronunciationSwitcher = () => {
   const currentDictInfo = useAtomValue(currentDictInfoAtom)
@@ -194,7 +193,7 @@ const PronunciationSwitcher = () => {
                           <Listbox.Button className="listbox-button">
                             <span>{pronunciationConfig.name}</span>
                             <span>
-                              <IconChevronDown className="focus:outline-none" />
+                              <ChevronDownIcon className="focus:outline-none" />
                             </span>
                           </Listbox.Button>
                           <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -206,7 +205,7 @@ const PronunciationSwitcher = () => {
                                       <span>{item.name}</span>
                                       {selected ? (
                                         <span className="listbox-options-icon">
-                                          <IconCheck className="focus:outline-none" />
+                                          <CheckIcon className="focus:outline-none" />
                                         </span>
                                       ) : null}
                                     </>

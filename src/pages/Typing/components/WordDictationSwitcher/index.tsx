@@ -1,13 +1,11 @@
 import { wordDictationConfigAtom } from '@/store'
 import type { WordDictationType } from '@/typings'
 import { Listbox, Popover, Switch, Transition } from '@headlessui/react'
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/solid'
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
 import { useAtom } from 'jotai'
 import { Fragment, useLayoutEffect, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
-import IconEyeSlash from '~icons/heroicons/eye-slash-solid'
-import IconEye from '~icons/heroicons/eye-solid'
-import IconCheck from '~icons/tabler/check'
-import IconChevronDown from '~icons/tabler/chevron-down'
 
 const wordDictationTypeList: { name: string; type: WordDictationType }[] = [
   {
@@ -65,17 +63,9 @@ export default function WordDictationSwitcher() {
     <Popover className="relative">
       {({ open }) => (
         <>
-          <Popover.Button
-            className={`flex items-center justify-center rounded p-[2px] text-lg ${
-              wordDictationConfig.isOpen ? 'text-indigo-500' : 'text-gray-500'
-            } outline-none transition-colors duration-300 ease-in-out hover:bg-indigo-400 hover:text-white  ${
-              open ? 'bg-indigo-500 text-white' : ''
-            }`}
-            type="button"
-            aria-label="开关默写模式"
-          >
-            {wordDictationConfig.isOpen ? <IconEye className="icon" /> : <IconEyeSlash className="icon" />}
-          </Popover.Button>
+          <button className="my-btn-primary h-12 w-12 rounded-full" onClick={onToggleWordDictation} title="开关默写模式">
+            {wordDictationConfig.isOpen ? <EyeSlashIcon className="h-6 w-6" /> : <EyeIcon className="h-6 w-6" />}
+          </button>
           <Transition
             as={Fragment}
             enter="transition ease-out duration-200"
@@ -117,7 +107,7 @@ export default function WordDictationSwitcher() {
                           <Listbox.Button className="listbox-button">
                             <span>{currentType.name}</span>
                             <span>
-                              <IconChevronDown className="focus:outline-none" />
+                              <ChevronDownIcon className="focus:outline-none" />
                             </span>
                           </Listbox.Button>
                           <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -129,7 +119,7 @@ export default function WordDictationSwitcher() {
                                       <span>{item.name}</span>
                                       {selected ? (
                                         <span className="listbox-options-icon">
-                                          <IconCheck className="focus:outline-none" />
+                                          <CheckIcon className="focus:outline-none" />
                                         </span>
                                       ) : null}
                                     </>
