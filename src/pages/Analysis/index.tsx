@@ -4,13 +4,13 @@ import LineCharts from './components/LineCharts'
 import { useWordStats } from './hooks/useWordStats'
 import Layout from '@/components/Layout'
 import { isOpenDarkModeAtom } from '@/store'
+import { XMarkIcon } from '@heroicons/react/24/solid'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import dayjs from 'dayjs'
 import { useAtom } from 'jotai'
 import { useCallback } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { useNavigate } from 'react-router-dom'
-import IconX from '~icons/tabler/x'
 
 const Analysis = () => {
   const navigate = useNavigate()
@@ -43,7 +43,7 @@ const Analysis = () => {
   return (
     <Layout>
       <div className="flex w-full flex-1 flex-col overflow-y-auto pl-20 pr-20 pt-20">
-        <IconX className="absolute right-20 top-10 mr-2 h-7 w-7 cursor-pointer text-gray-400" onClick={onBack} />
+        <XMarkIcon className="absolute right-20 top-10 mr-2 h-7 w-7 cursor-pointer text-gray-400" onClick={onBack} />
         <ScrollArea.Root className="flex-1 overflow-y-auto">
           <ScrollArea.Viewport className="h-full w-auto pb-[20rem] [&>div]:!block">
             {isEmpty ? (
